@@ -1,13 +1,13 @@
 /* Load Switzer Regular */
 @font-face {
   font-family: "Switzer";
-  src: url("./fonts/Switzer-Regular.ttf") format("truetype");
-  font-weight: 400;
+  src: url("./fonts/Chillax-Medium.otf") format("truetype");
+  font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: normal;
 }
 
 /* Apply globally */
 html, body, * {
-  font-family: "Switzer", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-family: "Switzer", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
 }
