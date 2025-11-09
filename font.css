@@ -1,13 +1,23 @@
-/* Load Switzer Regular */
+/* Load the correct font file */
 @font-face {
-  font-family: "Switzer";
-  src: url("./fonts/Chillax-Medium.otf") format("truetype");
-  font-weight: normal;
+  font-family: "Chillax"; /* or "Switzer" if that’s the correct name */
+  src: url("./fonts/Chillax-Medium.otf") format("opentype"); /* make sure this file exists */
+  font-weight: 400;
   font-style: normal;
-  font-display: normal;
+  font-display: swap;
 }
 
-/* Apply globally */
-html, body, * {
-  font-family: "Switzer", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+/* Apply the font to your text elements, not to every element */
+html, body {
+  font-family: "Chillax", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
+
+/* Allow Font Awesome to use its own webfont */
+.fa, .fa-solid, .fa-regular {
+  font-family: "Font Awesome 6 Free" !important;
+}
+.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+}
+.fa-solid { font-weight: 900; }
+.fa-regular { font-weight: 400; }
