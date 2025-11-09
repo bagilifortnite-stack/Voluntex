@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - VoluntEx</title>
+    <meta name="description" content="Learn about VoluntEx's mission to connect Ontario students with meaningful volunteer opportunities beyond graduation requirements.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dark Mode CSS -->
+    <link rel="stylesheet" href="dark-mode.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        
+        .animate-scale-up {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-hands-helping text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold text-blue-600 dark:text-blue-400">VoluntEx</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="home">Home</a>
+                        <a href="about.html" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors" data-translate="about">About</a>
+                        <a href="charities.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="charities">Charities</a>
+                        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="contact">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <span id="darkModeText" class="text-sm text-gray-600 dark:text-gray-400" data-translate="darkMode">Dark Mode</span>
+                    <button id="languageToggle" class="px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                        <span id="languageText" data-translate="french">Français</span>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="home">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-blue-600 dark:text-blue-400 font-medium" data-translate="about">About</a>
+                <a href="charities.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="charities">Charities</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="contact">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="mobileDarkModeToggle" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-moon"></i>
+                        <span data-translate="darkMode">Dark Mode</span>
+                    </button>
+                </div>
+                <div class="px-3 py-2">
+                    <button id="mobileLanguageToggle" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                        <span data-translate="french">Français</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                    About VoluntEx
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    We're on a mission to transform how Ontario students discover and engage with volunteer opportunities, 
+                    creating meaningful connections that last beyond graduation requirements.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                        Our Story
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        VoluntEx was born from a simple observation: while Ontario's 40-hour volunteer requirement for high school graduation 
+                        is well-intentioned, too many students treat it as a box to check rather than an opportunity for genuine growth and community impact.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        We watched as students scrambled to find any volunteer opportunity in their final year, often ending up in roles that 
+                        didn't align with their interests or provide meaningful experiences. Meanwhile, incredible non-profit organizations 
+                        in York Region struggled to find dedicated, passionate young volunteers.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300">
+                        That's when we realized the problem wasn't the requirement itself—it was the disconnect between students' passions 
+                        and the available opportunities. VoluntEx bridges that gap.
+                    </p>
+                </div>
+                <div class="animate-on-scroll">
+                    <img src="resources/hero-volunteers.jpg" alt="Students volunteering" class="rounded-2xl shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Our Mission & Vision
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-slate-700 rounded-2xl p-8 shadow-lg animate-on-scroll">
+                    <div class="bg-blue-100 dark:bg-blue-900/30 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-blue-600 dark:text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        To connect Ontario students with volunteer opportunities that align with their passions, skills, and career aspirations, 
+                        transforming the graduation requirement into a launching pad for lifelong civic engagement and personal growth.
+                    </p>
+                </div>
+                
+                <div class="bg-white dark:bg-slate-700 rounded-2xl p-8 shadow-lg animate-on-scroll">
+                    <div class="bg-green-100 dark:bg-green-900/30 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                        <i class="fas fa-eye text-green-600 dark:text-green-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Vision</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        A future where every student graduates not just with 40 volunteer hours, but with meaningful experiences, 
+                        new skills, and a genuine passion for community service that continues throughout their lives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Meet Our Team
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    The passionate individuals behind VoluntEx's mission
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center animate-on-scroll">
+                    <img src="https://kimi-web-img.moonshot.cn/img/imageio.forbes.com/8ead6e95a866adcf6edac42110ebcf2b1b7b02c7.jpg" alt="Sarah Chen" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Sarah Chen</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Founder & Executive Director</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Former high school teacher with 8 years of experience helping students find meaningful volunteer opportunities. 
+                        Passionate about youth development and community engagement.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center animate-on-scroll">
+                    <img src="https://kimi-web-img.moonshot.cn/img/portraitpal.ai/cd52d2d3c3134e66574bf1369094dda00f2ebeae.jpg" alt="Marcus Rodriguez" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Marcus Rodriguez</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Technical Director</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Software engineer with expertise in building scalable web applications. Previously worked at major tech companies 
+                        before dedicating his skills to social impact projects.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center animate-on-scroll">
+                    <img src="https://kimi-web-img.moonshot.cn/img/jcpportraits.com/839deb1b64843e369330496136d57438cf093969.jpg" alt="Emily Thompson" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Emily Thompson</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Community Outreach Manager</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Non-profit veteran with 12 years of experience in volunteer coordination and community partnerships. 
+                        Expert in building relationships between organizations and young volunteers.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-card bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center animate-on-scroll">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/f01e01d00d63515be56f4627a4426361a80760b7" alt="David Kim" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">David Kim</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Student Success Coordinator</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Recent university graduate who understands firsthand the challenges students face in finding meaningful volunteer work. 
+                        Dedicated to helping students make the most of their volunteer experiences.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 5 -->
+                <div class="team-card bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center animate-on-scroll">
+                    <img src="https://kimi-web-img.moonshot.cn/img/headshots-inc.com/3d90233c521259f04669e6893dd137ab0d06cc53.jpg" alt="Lisa Patel" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Lisa Patel</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Data & Impact Analyst</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Data scientist specializing in social impact measurement. Tracks and analyzes the effectiveness of our matching 
+                        system to continuously improve student outcomes.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 6 -->
+                <div class="team-card bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 text-center animate-on-scroll">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.istockphoto.com/088dad9506a9eeec0923f18a1e4e0b826f556d8b.jpg" alt="James Wilson" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">James Wilson</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium mb-4">Marketing & Communications</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Marketing professional with experience in the non-profit sector. Creates compelling campaigns that inspire 
+                        students to see volunteering as an exciting opportunity for growth and impact.
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Our Core Values
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="bg-blue-100 dark:bg-blue-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Purpose-Driven</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Every connection we make serves a greater purpose of building stronger communities.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="bg-green-100 dark:bg-green-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-green-600 dark:text-green-400"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Student-Centered</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">We prioritize students' interests, growth, and long-term development in everything we do.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="bg-purple-100 dark:bg-purple-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-purple-600 dark:text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Authentic Connections</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">We believe in genuine relationships between students and organizations that create lasting impact.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="bg-orange-100 dark:bg-orange-900/30 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-orange-600 dark:text-orange-400"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Continuous Growth</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">We're always learning and improving to better serve students and our community partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Metrics Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Our Impact So Far
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    The numbers tell the story of the difference we're making together
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center animate-on-scroll">
+                    <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">2,500+</div>
+                    <p class="text-gray-600 dark:text-gray-300">Students Matched</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">With perfect volunteer opportunities</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">25</div>
+                    <p class="text-gray-600 dark:text-gray-300">Partner Organizations</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Across York Region</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">15,000+</div>
+                    <p class="text-gray-600 dark:text-gray-300">Volunteer Hours</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Completed with passion</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">95%</div>
+                    <p class="text-gray-600 dark:text-gray-300">Satisfaction Rate</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">From students and organizations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-hands-helping text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold">VoluntEx</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Connecting students with meaningful volunteer opportunities across York Region, Ontario
+                </p>
+                <p class="text-gray-500 text-sm">
+                    © 2024 VoluntEx. All rights reserved. | Empowering the next generation of volunteers.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

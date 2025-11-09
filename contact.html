@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - VoluntEx</title>
+    <meta name="description" content="Get in touch with VoluntEx. We're here to help students, parents, and organizations connect for meaningful volunteer opportunities.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dark Mode CSS -->
+    <link rel="stylesheet" href="dark-mode.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        
+        .faq-answer {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-hands-helping text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold text-blue-600 dark:text-blue-400">VoluntEx</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="home">Home</a>
+                        <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="about">About</a>
+                        <a href="charities.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="charities">Charities</a>
+                        <a href="contact.html" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors" data-translate="contact">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <span id="darkModeText" class="text-sm text-gray-600 dark:text-gray-400" data-translate="darkMode">Dark Mode</span>
+                    <button id="languageToggle" class="px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                        <span id="languageText" data-translate="french">Français</span>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="home">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="about">About</a>
+                <a href="charities.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="charities">Charities</a>
+                <a href="contact.html" class="block px-3 py-2 text-blue-600 dark:text-blue-400 font-medium" data-translate="contact">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="mobileDarkModeToggle" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-moon"></i>
+                        <span data-translate="darkMode">Dark Mode</span>
+                    </button>
+                </div>
+                <div class="px-3 py-2">
+                    <button id="mobileLanguageToggle" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                        <span data-translate="french">Français</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                    Get In Touch
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    We're here to help students, parents, educators, and organizations connect for meaningful volunteer opportunities. 
+                    Reach out with any questions, suggestions, or partnership inquiries.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Contact Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
+                        
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required 
+                                           class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required 
+                                           class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                                <select id="subject" name="subject" required 
+                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                                    <option value="">Select a topic</option>
+                                    <option value="student-inquiry">Student Inquiry</option>
+                                    <option value="parent-inquiry">Parent Inquiry</option>
+                                    <option value="organization-partnership">Organization Partnership</option>
+                                    <option value="technical-support">Technical Support</option>
+                                    <option value="general-question">General Question</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="6" required 
+                                          class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all resize-none"
+                                          placeholder="Tell us how we can help you..."></textarea>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <input type="checkbox" id="newsletter" name="newsletter" class="mt-1 mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                <label for="newsletter" class="text-sm text-gray-600 dark:text-gray-300">
+                                    I'd like to receive updates about new volunteer opportunities and VoluntEx news.
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    
+                    <!-- General Contact -->
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">General Inquiries</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-600 dark:text-blue-400 mr-3"></i>
+                                <a href="mailto:hello@voluntex.org" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">hello@voluntex.org</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-blue-600 dark:text-blue-400 mr-3"></i>
+                                <a href="tel:+19055551234" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">(905) 555-1234</a>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-blue-600 dark:text-blue-400 mr-3 mt-1"></i>
+                                <span class="text-gray-700 dark:text-gray-300">York Region, Ontario, Canada</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Student Support -->
+                    <div class="bg-green-50 dark:bg-green-900/20 rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Student Support</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-green-600 dark:text-green-400 mr-3"></i>
+                                <a href="mailto:students@voluntex.org" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400">students@voluntex.org</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-green-600 dark:text-green-400 mr-3"></i>
+                                <span class="text-gray-700 dark:text-gray-300">Response within 24 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Organization Partnerships -->
+                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Organization Partnerships</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-purple-600 dark:text-purple-400 mr-3"></i>
+                                <a href="mailto:partnerships@voluntex.org" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">partnerships@voluntex.org</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-handshake text-purple-600 dark:text-purple-400 mr-3"></i>
+                                <span class="text-gray-700 dark:text-gray-300">Join our network of 25+ organizations</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Response Times -->
+                    <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Response Times</h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                            <li>• General inquiries: Within 24 hours</li>
+                            <li>• Student support: Within 12 hours</li>
+                            <li>• Technical issues: Within 6 hours</li>
+                            <li>• Partnership requests: Within 48 hours</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Quick answers to common questions about volunteering through VoluntEx
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white dark:bg-slate-700 rounded-2xl p-6 cursor-pointer">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">How do I start finding volunteer opportunities?</h3>
+                        <i class="faq-icon fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-gray-600 dark:text-gray-300">
+                        <p>Getting started is easy! Click the "Get Started" button on our homepage and fill out our simple matching form. Tell us about your interests, grade level, and what causes you're passionate about. We'll then show you organizations that align with your preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-slate-700 rounded-2xl p-6 cursor-pointer">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Is VoluntEx free to use?</h3>
+                        <i class="faq-icon fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-gray-600 dark:text-gray-300">
+                        <p>Yes! VoluntEx is completely free for students and volunteers. We believe that finding meaningful volunteer opportunities should never come with a cost barrier. Our mission is to connect students with organizations that need their help.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-slate-700 rounded-2xl p-6 cursor-pointer">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">What if I don't see any organizations in my area?</h3>
+                        <i class="faq-icon fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-gray-600 dark:text-gray-300">
+                        <p>We're constantly expanding our network of partner organizations. If you don't see opportunities in your specific area of York Region, contact us at students@voluntex.org. We may know of additional opportunities or can help you find organizations that aren't yet in our system.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-slate-700 rounded-2xl p-6 cursor-pointer">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Can I volunteer if I'm not in high school yet?</h3>
+                        <i class="faq-icon fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-gray-600 dark:text-gray-300">
+                        <p>Absolutely! While our platform is designed with Ontario's 40-hour graduation requirement in mind, we welcome students of all ages who want to make a difference. Many organizations have opportunities for middle school students and even younger volunteers with parental supervision.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-slate-700 rounded-2xl p-6 cursor-pointer">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">How do I track my volunteer hours?</h3>
+                        <i class="faq-icon fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-gray-600 dark:text-gray-300">
+                        <p>Each organization you volunteer with will provide you with documentation of your hours. We also recommend keeping your own log. Many schools provide volunteer hour tracking sheets, or you can create your own simple spreadsheet. Make sure to get signatures from supervisors at the organizations where you volunteer.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-slate-700 rounded-2xl p-6 cursor-pointer">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">What if I want to volunteer with multiple organizations?</h3>
+                        <i class="faq-icon fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-answer hidden mt-4 text-gray-600 dark:text-gray-300">
+                        <p>That's wonderful! We encourage exploring different causes and organizations. You can absolutely volunteer with multiple organizations simultaneously or try different ones to find what resonates most with you. Each experience contributes to your growth and community impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Hours Tracker Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Volunteer Hours Tracker
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Keep track of your progress toward the 40-hour graduation requirement
+                </p>
+            </div>
+            
+            <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Track Your Progress</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="currentHours" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Current Hours Completed</label>
+                                <input type="number" id="currentHours" min="0" max="40" value="0" 
+                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2" id="hoursRemaining">40</div>
+                                <p class="text-gray-600 dark:text-gray-300">hours remaining</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="relative w-48 h-48 mx-auto">
+                            <svg class="w-48 h-48 transform -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                <circle id="progressCircle" cx="50" cy="50" r="40" stroke="#3b82f6" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-gray-900 dark:text-white" id="percentageComplete">0%</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-300">Complete</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-6">
+                            <div class="inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                <span id="graduationStatus">Keep going! You're on track for graduation.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-2">💡 Pro Tips:</h4>
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                        <li>• Aim to complete your hours gradually rather than all at once</li>
+                        <li>• Try different types of volunteer work to discover your passions</li>
+                        <li>• Keep detailed records with supervisor signatures</li>
+                        <li>• Consider continuing to volunteer even after meeting the requirement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-hands-helping text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold">VoluntEx</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Connecting students with meaningful volunteer opportunities across York Region, Ontario
+                </p>
+                <p class="text-gray-500 text-sm">
+                    © 2024 VoluntEx. All rights reserved. | Empowering the next generation of volunteers.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Volunteer Hours Tracker Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentHoursInput = document.getElementById('currentHours');
+            const hoursRemainingSpan = document.getElementById('hoursRemaining');
+            const percentageCompleteSpan = document.getElementById('percentageComplete');
+            const progressCircle = document.getElementById('progressCircle');
+            const graduationStatusSpan = document.getElementById('graduationStatus');
+            
+            const totalHours = 40;
+            const circumference = 2 * Math.PI * 40; // radius = 40
+            
+            function updateProgress() {
+                const currentHours = parseInt(currentHoursInput.value) || 0;
+                const remainingHours = Math.max(0, totalHours - currentHours);
+                const percentage = Math.min(100, (currentHours / totalHours) * 100);
+                
+                hoursRemainingSpan.textContent = remainingHours;
+                percentageCompleteSpan.textContent = Math.round(percentage) + '%';
+                
+                // Update progress circle
+                const offset = circumference - (percentage / 100) * circumference;
+                progressCircle.style.strokeDashoffset = offset;
+                
+                // Update graduation status
+                if (currentHours >= totalHours) {
+                    graduationStatusSpan.textContent = '🎉 Congratulations! You've met the graduation requirement!';
+                    graduationStatusSpan.parentElement.className = 'inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg';
+                } else if (currentHours >= 30) {
+                    graduationStatusSpan.textContent = 'Great progress! You\'re almost there!';
+                    graduationStatusSpan.parentElement.className = 'inline-flex items-center px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-lg';
+                } else {
+                    graduationStatusSpan.textContent = 'Keep going! You\'re on track for graduation.';
+                    graduationStatusSpan.parentElement.className = 'inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg';
+                }
+            }
+            
+            currentHoursInput.addEventListener('input', updateProgress);
+            updateProgress(); // Initial calculation
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

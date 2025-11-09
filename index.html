@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoluntEx - Connecting Students with Meaningful Volunteer Opportunities</title>
+    <meta name="description" content="Are you ready to make real change? VoluntEx connects Ontario students with meaningful volunteer opportunities that go beyond graduation requirements.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dark Mode CSS -->
+    <link rel="stylesheet" href="dark-mode.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        
+        .animate-scale-up {
+            transform: scale(1.05);
+        }
+        
+        .animate-slide-out {
+            animation: slideOut 0.3s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes slideOut {
+            from { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+            to { 
+                opacity: 0; 
+                transform: translateX(100px); 
+            }
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .organization-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .organization-card.animate-slide-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Particle background */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #1E3A8A;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1e40af;
+        }
+        
+        /* Typed.js cursor styling */
+        .typed-cursor {
+            color: #1E3A8A;
+            font-weight: 300;
+        }
+        
+        .dark .typed-cursor {
+            color: #60A5FA;
+        }
+        
+        /* Ensure proper contrast in hero section */
+        .dark .bg-gradient-to-br.from-blue-50.to-indigo-100 {
+            background: linear-gradient(to bottom right, #0F172A, #1E293B) !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-hands-helping text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold text-blue-600 dark:text-blue-400">VoluntEx</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors" data-translate="home">Home</a>
+                        <a href="about.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="about">About</a>
+                        <a href="charities.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="charities">Charities</a>
+                        <a href="contact.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-translate="contact">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <span id="darkModeText" class="text-sm text-gray-600 dark:text-gray-400" data-translate="darkMode">Dark Mode</span>
+                    <button id="languageToggle" class="px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                        <span id="languageText" data-translate="french">Français</span>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-blue-600 dark:text-blue-400 font-medium" data-translate="home">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="about">About</a>
+                <a href="charities.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="charities">Charities</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" data-translate="contact">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="mobileDarkModeToggle" class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-moon"></i>
+                        <span data-translate="darkMode">Dark Mode</span>
+                    </button>
+                </div>
+                <div class="px-3 py-2">
+                    <button id="mobileLanguageToggle" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                        <span data-translate="french">Français</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+        <div id="particle-canvas"></div>
+        
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <!-- Main Motto -->
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
+                    <span id="motto" data-translate="motto">Are you ready to make real change?</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p id="subtitle" class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8" style="opacity: 0;" data-translate="subtitle">
+                    Connecting students with meaningful volunteer opportunities that go beyond graduation requirements.
+                </p>
+                
+                <!-- CTA Button -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button id="startMatching" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg" data-translate="getStarted">
+                        Get Started
+                    </button>
+                    <div class="flex items-center text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-users mr-2"></i>
+                        <span>2,500+ students matched</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-gray-400 dark:text-gray-600 text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Student Matching Form Section -->
+    <section id="matchingFormSection" class="hidden py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Find Your Perfect Volunteer Match
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Tell us a bit about yourself and we'll connect you with organizations that align with your interests.
+                </p>
+            </div>
+            
+            <form id="studentMatchingForm" class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 shadow-lg">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Name -->
+                    <div class="form-element">
+                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" data-translate="name">Name</label>
+                        <input type="text" id="name" name="name" required 
+                               class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all"
+                               placeholder="Enter your name">
+                    </div>
+                    
+                    <!-- Grade -->
+                    <div class="form-element">
+                        <label for="grade" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" data-translate="grade">Grade</label>
+                        <select id="grade" name="grade" required 
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                            <option value="">Select your grade</option>
+                            <option value="9">Grade 9</option>
+                            <option value="10">Grade 10</option>
+                            <option value="11">Grade 11</option>
+                            <option value="12">Grade 12</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Field of Interest -->
+                    <div class="form-element md:col-span-2">
+                        <label for="fieldOfInterest" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" data-translate="fieldOfInterest">Field of Interest</label>
+                        <select id="fieldOfInterest" name="fieldOfInterest" required 
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all">
+                            <option value="">Select a field</option>
+                            <option value="Youth Services">Youth Services & Mentorship</option>
+                            <option value="Food Security">Food Security & Nutrition</option>
+                            <option value="Animal Welfare">Animal Welfare & Care</option>
+                            <option value="Mental Health">Mental Health & Wellness</option>
+                            <option value="Senior Support">Senior Support & Care</option>
+                            <option value="Environmental">Environmental & Sustainability</option>
+                            <option value="Healthcare">Healthcare & Medical</option>
+                            <option value="Women & Children's Shelter">Women & Children's Services</option>
+                        </select>
+                    </div>
+                    
+                    <!-- About Me -->
+                    <div class="form-element md:col-span-2">
+                        <label for="aboutMe" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" data-translate="aboutMe">About Me</label>
+                        <textarea id="aboutMe" name="aboutMe" rows="4" required 
+                                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-all resize-none"
+                                  placeholder="Tell us a bit about yourself, your interests, and what you're looking for in a volunteer experience..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <button type="submit" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg" data-translate="findOpportunities">
+                        Find Opportunities
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Matching Results Section -->
+    <section id="matchingResults" class="hidden py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4" data-translate="matchedOrganizations">
+                    Matched Organizations
+                </h2>
+            </div>
+            
+            <div id="matchedOrganizations" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Organization cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Making a Real Impact
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Numbers that show the difference we're making together
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-blue-100 dark:bg-blue-900/30 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-blue-600 dark:text-blue-400 text-2xl"></i>
+                    </div>
+                    <div class="stat-counter text-4xl font-bold text-gray-900 dark:text-white mb-2" data-target="2500">0</div>
+                    <p class="text-gray-600 dark:text-gray-300">Students Matched</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-green-100 dark:bg-green-900/30 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-holding-heart text-green-600 dark:text-green-400 text-2xl"></i>
+                    </div>
+                    <div class="stat-counter text-4xl font-bold text-gray-900 dark:text-white mb-2" data-target="25">0</div>
+                    <p class="text-gray-600 dark:text-gray-300">Partner Organizations</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-purple-100 dark:bg-purple-900/30 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-purple-600 dark:text-purple-400 text-2xl"></i>
+                    </div>
+                    <div class="stat-counter text-4xl font-bold text-gray-900 dark:text-white mb-2" data-target="15000">0</div>
+                    <p class="text-gray-600 dark:text-gray-300">Volunteer Hours Completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    How It Works
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Three simple steps to find your perfect volunteer opportunity
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Tell Us About Yourself</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Share your interests, grade level, and what you're passionate about</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Get Matched</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Our system finds organizations that align with your interests and availability</p>
+                </div>
+                
+                <div class="text-center animate-on-scroll">
+                    <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Make an Impact</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Connect with organizations and start making a real difference in your community</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Organizations Section -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    Featured Organizations
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Some of our amazing partner organizations making a difference
+                </p>
+            </div>
+            
+            <div class="splide" id="featuredOrganizations">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 text-center">
+                                <img src="https://kimi-web-img.moonshot.cn/img/www.centraltexasfoodbank.org/1731749299f1ac9ea67af5e1c51e2533bfaba7ee.jpg" alt="Food Bank of York Region" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Food Bank of York Region</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Fighting food insecurity across York Region</p>
+                                <span class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">Food Security</span>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 text-center">
+                                <img src="https://kimi-web-img.moonshot.cn/img/cdn.sanity.io/22a7a4e5e1d9bc6cc500b4e671d428da6c8dd8fd.jpg" alt="Ontario SPCA" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Ontario SPCA</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Caring for animals in need</p>
+                                <span class="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full text-sm font-medium">Animal Welfare</span>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 text-center">
+                                <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/bf0db8737e4ede91184d781d9376aa9f0cd2a75e.png" alt="CMHA" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">CMHA York Region</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Supporting mental health and wellness</p>
+                                <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-3 py-1 rounded-full text-sm font-medium">Mental Health</span>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-gray-50 dark:bg-slate-800 rounded-xl p-6 text-center">
+                                <img src="https://kimi-web-img.moonshot.cn/img/discoveryvillages.com/3a3194fef234b60854544bc9b6d9cff89814b6bd.jpg" alt="CHATS" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">CHATS</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Supporting seniors in our community</p>
+                                <span class="bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 px-3 py-1 rounded-full text-sm font-medium">Senior Support</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-hands-helping text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold">VoluntEx</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Connecting students with meaningful volunteer opportunities across York Region, Ontario
+                </p>
+                <p class="text-gray-500 text-sm">
+                    © 2024 VoluntEx. All rights reserved. | Empowering the next generation of volunteers.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particle Background Script -->
+    <script>
+        let particles = [];
+        let canvas, ctx;
+        
+        function setupParticles() {
+            canvas = document.createElement('canvas');
+            canvas.id = 'particle-canvas';
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.zIndex = '1';
+            
+            const heroSection = document.querySelector('.relative.min-h-screen');
+            heroSection.style.position = 'relative';
+            heroSection.appendChild(canvas);
+            
+            ctx = canvas.getContext('2d');
+            
+            function resizeCanvas() {
+                canvas.width = heroSection.offsetWidth;
+                canvas.height = heroSection.offsetHeight;
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Create particles
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 3 + 1,
+                    opacity: Math.random() * 0.3 + 0.1
+                });
+            }
+            
+            animateParticles();
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                
+                if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+                
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(30, 58, 138, ${particle.opacity})`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        // Initialize particles after page load
+        document.addEventListener('DOMContentLoaded', setupParticles);
+    </script>
+
+    <!-- Initialize Splide Carousel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('#featuredOrganizations', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '2rem',
+                autoplay: true,
+                interval: 4000,
+                breakpoints: {
+                    768: {
+                        perPage: 1,
+                    },
+                    1024: {
+                        perPage: 2,
+                    }
+                }
+            }).mount();
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
