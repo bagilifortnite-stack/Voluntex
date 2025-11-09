@@ -496,7 +496,8 @@ function displayMatchedOrganizations(matchedOrgs, studentData) {
     const message = document.createElement('div');
     message.className = 'text-center mb-8';
     message.innerHTML = `
-        <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-900 dark:text-white
+        <h3 class="text-2xl font-semibold text-gray-800 dark:text-black
+ dark:text-white
  mb-4">
             Great news, ${studentData.name}! We found ${matchedOrgs.length} organizations that match your interests.
         </h3>
@@ -514,13 +515,15 @@ function createOrganizationCard(org, index) {
     card.innerHTML = `
         <div class="relative">
             <img src="${org.image}" alt="${org.name}" class="w-full h-48 object-cover">
-            <div class="absolute top-4 right-4 bg-blue-600 text-gray-900 dark:text-white
+            <div class="absolute top-4 right-4 bg-blue-600 text-black
+ dark:text-white
  px-3 py-1 rounded-full text-sm font-medium">
                 ${org.causeArea}
             </div>
         </div>
         <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-900 dark:text-white
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-black
+ dark:text-white
  mb-2">${org.name}</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">${org.description}</p>
             <div class="flex flex-wrap gap-2 mb-4">
@@ -533,12 +536,14 @@ function createOrganizationCard(org, index) {
             </div>
             <div class="flex gap-3">
                 <button onclick="viewOrganizationDetails('${org.name}')" 
-                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-gray-900 dark:text-white
+                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-black
+ dark:text-white
  font-medium py-2 px-4 rounded transition-colors">
                     ${translations[currentLanguage].viewDetails}
                 </button>
                 <button onclick="contactOrganization('${org.email}')" 
-                        class="flex-1 bg-green-600 hover:bg-green-700 text-gray-900 dark:text-white
+                        class="flex-1 bg-green-600 hover:bg-green-700 text-black
+ dark:text-white
  font-medium py-2 px-4 rounded transition-colors">
                     ${translations[currentLanguage].contactNow}
                 </button>
@@ -742,7 +747,8 @@ function showNotification(message, type = 'info') {
     notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
         type === 'success' ? 'bg-green-600' : 
         type === 'error' ? 'bg-red-600' : 'bg-blue-600'
-    } text-gray-900 dark:text-white
+    } text-black
+ dark:text-white
 `;
     notification.textContent = message;
     
