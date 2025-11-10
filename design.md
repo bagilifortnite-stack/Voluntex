@@ -8,7 +8,7 @@
 ### Color Palette
 **Primary Colors**:
 - **Persian Blue** (#1E3A8A) - From your logo, used for primary CTAs and navigation
-- **Soft white** (#FEFEFE) - Clean background for light mode
+- **Soft White** (#FEFEFE) - Clean background for light mode
 - **Charcoal** (#374151) - Primary text color for excellent contrast
 
 **Secondary Colors**:

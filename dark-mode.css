@@ -161,12 +161,12 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Buttons */
-.bg-white {
+.bg-blue-600 {
     background-color: var(--accent-blue) !important;
     transition: background-color 0.3s ease;
 }
 
-.bg-white:hover {
+.bg-blue-600:hover {
     background-color: var(--accent-blue-hover) !important;
 }
 

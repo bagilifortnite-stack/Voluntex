@@ -539,7 +539,7 @@ function createOrganizationCard(org, index) {
     card.innerHTML = `
         <div class="relative">
             <img src="${org.image}" alt="${org.name}" class="w-full h-48 object-cover">
-            <div class="absolute top-4 right-4 bg-white text-black
+            <div class="absolute top-4 right-4 bg-blue-600 text-black
  dark:text-white
  px-3 py-1 rounded-full text-sm font-medium">
                 ${org.causeArea}
@@ -560,7 +560,7 @@ function createOrganizationCard(org, index) {
             </div>
             <div class="flex gap-3">
                 <button onclick="viewOrganizationDetails('${org.name}')" 
-                        class="flex-1 bg-white hover:bg-blue-700 text-black
+                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-black
  dark:text-white
  font-medium py-2 px-4 rounded transition-colors">
                     ${translations[currentLanguage].viewDetails}
@@ -770,7 +770,7 @@ function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
         type === 'success' ? 'bg-green-600' : 
-        type === 'error' ? 'bg-red-600' : 'bg-white'
+        type === 'error' ? 'bg-red-600' : 'bg-blue-600'
     } text-black
  dark:text-white
 `;
