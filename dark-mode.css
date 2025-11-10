@@ -3,10 +3,10 @@
 /* Root variables for light and dark themes */
 :root {
     /* Light Theme Colors */
-    --bg-primary: #ffffff;
+    --bg-primary: #6d6d6e;
     --bg-secondary: #f8fafc;
     --bg-tertiary: #f1f5f9;
-    --bg-card: #ffffff;
+    --bg-card: #6d6d6e;
     --bg-hover: #f8fafc;
     
     --text-primary: #0f172a;
