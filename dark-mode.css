@@ -122,10 +122,6 @@ nav .backdrop-blur-md {
     transition: color 0.3s ease;
 }
 
-.text-gray-600 {
-    color: var(--text-tertiary) !important;
-    transition: color 0.3s ease;
-}
 
 .text-gray-500 {
     color: var(--text-muted) !important;
