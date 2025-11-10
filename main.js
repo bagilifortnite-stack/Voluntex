@@ -496,7 +496,7 @@ function displayMatchedOrganizations(matchedOrgs, studentData) {
     const message = document.createElement('div');
     message.className = 'text-center mb-8';
     message.innerHTML = `
-        <h3 class="text-2xl font-semibold text-blue-600 dark:text-black
+        <h3 class="text-2xl font-semibold text-gray 600 dark:text-black
  dark:text-white
  mb-4">
             Great news, ${studentData.name}! We found ${matchedOrgs.length} organizations that match your interests.
@@ -522,7 +522,7 @@ function createOrganizationCard(org, index) {
             </div>
         </div>
         <div class="p-6">
-            <h3 class="text-xl font-semibold text-blue-600 dark:text-black
+            <h3 class="text-xl font-semibold text-gray 600 dark:text-black
  dark:text-white
  mb-2">${org.name}</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">${org.description}</p>
@@ -666,7 +666,7 @@ function displayOrganizations(orgs) {
     if (orgs.length === 0) {
         container.innerHTML = `
             <div class="col-span-full text-center py-12">
-                <h3 class="text-xl font-semibold text-gray-600 dark:text-blue-600 mb-4">
+                <h3 class="text-xl font-semibold text-gray-600 dark:text-gray 600 mb-4">
                     No organizations found matching your criteria.
                 </h3>
                 <p class="text-gray-500 dark:text-gray-500">
