@@ -569,4 +569,20 @@
     <!-- Main JavaScript -->
     <script src="main.js"></script>
 </body>
+
+
+<style>
+/* Light mode only (when <html> does NOT have .dark) */
+html:not(.dark) h2 {
+  color: #000 !important;
+  background: #fff !important;
+}
+
+/* Dark mode (when <html> HAS .dark) */
+html.dark h2 {
+  color: #fff !important;
+  background: transparent !important; /* or remove if you want a bar */
+}
+</style>
+    
 </html>
