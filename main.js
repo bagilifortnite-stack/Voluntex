@@ -314,6 +314,30 @@ function updateDarkModeButton() {
     }
 }
 
+// ---- Dark mode: add/remove 'dark' on <html> only ----
+const root = document.documentElement; // <html>
+
+function applyThemeFromStorage() {
+  const saved = localStorage.getItem('theme');
+  const shouldDark =
+    saved === 'dark' ||
+    (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  root.classList.toggle('dark', shouldDark);
+}
+
+applyThemeFromStorage();
+
+// desktop + mobile buttons
+document.getElementById('darkModeToggle')?.addEventListener('click', () => {
+  root.classList.toggle('dark');
+  localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+});
+document.getElementById('mobileDarkModeToggle')?.addEventListener('click', () => {
+  root.classList.toggle('dark');
+  localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+});
+
 function initializeLanguageToggle() {
     const languageToggle = document.getElementById('languageToggle');
     if (languageToggle) {
