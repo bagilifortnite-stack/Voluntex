@@ -96,7 +96,7 @@ nav .backdrop-blur-md {
 }
 
 /* Cards and containers */
-.bg-blue-600 {
+.bg-white {
     background-color: var(--bg-card) !important;
     transition: background-color 0.3s ease;
 }
@@ -161,12 +161,12 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Buttons */
-.bg-blue-600 {
+.bg-white {
     background-color: var(--accent-blue) !important;
     transition: background-color 0.3s ease;
 }
 
-.bg-blue-600:hover {
+.bg-white:hover {
     background-color: var(--accent-blue-hover) !important;
 }
 

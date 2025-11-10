@@ -89,7 +89,7 @@
 <body class="bg-gray-50 dark:bg-slate-900 text-gray 600 dark:text-gray-200 transition-colors duration-300">
     
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-blue-600/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 
@@ -138,7 +138,7 @@
         </div>
         
         <!-- Mobile Navigation -->
-        <div class="mobile-menu hidden md:hidden bg-blue-600 dark:bg-slate-900 border-t border-gray-200 dark:border-gray-700">
+        <div class="mobile-menu hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-gray-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="index.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-gray 600 dark:hover:text-blue-400" data-translate="home">Home</a>
                 <a href="about.html" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-gray 600 dark:hover:text-blue-400" data-translate="about">About</a>
@@ -165,7 +165,7 @@
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-black
  dark:text-black
- dark:text-blue-600
+ dark:text-white
  mb-6">
                     Find Your Perfect Match
                 </h1>
@@ -178,7 +178,7 @@
     </section>
 
     <!-- Search and Filter Section -->
-    <section class="py-8 bg-blue-600 dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700">
+    <section class="py-8 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="filter-card rounded-2xl p-6 shadow-lg">
                 <div class="grid md:grid-cols-4 gap-4">
@@ -188,7 +188,7 @@
                         <div class="relative">
                             <input type="text" id="searchInput" placeholder="Search by name or description..." 
                                    class="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-black
- dark:text-blue-600
+ dark:text-white
  transition-all">
                             <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray 600"></i>
                         </div>
@@ -198,7 +198,7 @@
                     <div>
                         <label for="causeFilter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Cause Area</label>
                         <select id="causeFilter" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-black
- dark:text-blue-600
+ dark:text-white
  transition-all">
                             <option value="">All Causes</option>
                             <option value="Youth Services">Youth Services</option>
@@ -217,7 +217,7 @@
                     <div>
                         <label for="locationFilter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Location</label>
                         <select id="locationFilter" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-black
- dark:text-blue-600
+ dark:text-white
  transition-all">
                             <option value="">All Locations</option>
                             <option value="Richmond Hill">Richmond Hill</option>
@@ -260,14 +260,14 @@
                 <div>
                     <h2 class="text-2xl font-bold text-black
  dark:text-black
- dark:text-blue-600
+ dark:text-white
 ">Organizations</h2>
                     <p class="text-gray-600 dark:text-gray-300" id="resultsCount">Showing all organizations</p>
                 </div>
                 <div class="flex items-center space-x-4">
                     <span class="text-sm text-gray-600 dark:text-gray-300">Sort by:</span>
                     <select id="sortBy" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-black
- dark:text-blue-600
+ dark:text-white
  text-sm">
                         <option value="name">Name (A-Z)</option>
                         <option value="cause">Cause Area</option>
@@ -283,8 +283,8 @@
             
             <!-- Load More Button -->
             <div class="text-center mt-12">
-                <button id="loadMoreBtn" class="bg-blue-600 hover:bg-blue-700 text-black
- dark:text-blue-600
+                <button id="loadMoreBtn" class="bg-white hover:bg-blue-700 text-black
+ dark:text-white
  font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105" style="display: none;">
                     Load More Organizations
                 </button>
@@ -293,10 +293,10 @@
     </section>
 
     <!-- Add Your Organization CTA -->
-    <section class="py-16 bg-blue-600 dark:bg-blue-800">
+    <section class="py-16 bg-white dark:bg-blue-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-black
- dark:text-blue-600
+ dark:text-white
  mb-4">
                 Are you a non-profit organization?
             </h2>
@@ -304,12 +304,12 @@
                 Join our network of organizations and connect with passionate, dedicated student volunteers who want to make a real difference.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="bg-blue-600 text-gray 600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors">
+                <a href="contact.html" class="bg-white text-gray 600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors">
                     Add Your Organization
                 </a>
-                <a href="about.html" class="border-2 border-blue-600 text-black
- dark:text-blue-600
- font-semibold py-3 px-8 rounded-lg hover:bg-blue-600 hover:text-gray 600 transition-colors">
+                <a href="about.html" class="border-2 border-white text-black
+ dark:text-white
+ font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-gray 600 transition-colors">
                     Learn More About Us
                 </a>
             </div>
@@ -318,7 +318,7 @@
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-black
- dark:text-blue-600
+ dark:text-white
  py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">

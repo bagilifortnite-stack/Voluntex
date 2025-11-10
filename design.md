@@ -8,7 +8,7 @@
 ### Color Palette
 **Primary Colors**:
 - **Persian Blue** (#1E3A8A) - From your logo, used for primary CTAs and navigation
-- **Soft blue-600** (#FEFEFE) - Clean background for light mode
+- **Soft white** (#FEFEFE) - Clean background for light mode
 - **Charcoal** (#374151) - Primary text color for excellent contrast
 
 **Secondary Colors**:
@@ -70,13 +70,13 @@
 
 ### Interactive Elements
 **Buttons**:
-- Primary: Persian Blue background, blue-600 text, subtle shadow
+- Primary: Persian Blue background, white text, subtle shadow
 - Secondary: Transparent with Persian Blue border
 - Hover: Gentle scale and shadow increase
 - Active states with color shift
 
 **Cards**:
-- Clean blue-600 background with subtle border
+- Clean white background with subtle border
 - Hover: Lift effect with increased shadow
 - 8px border radius for modern feel
 - Smooth transitions on all interactive states
@@ -88,7 +88,7 @@
 - Consistent padding and typography
 
 ### Background Treatment
-**Consistent Background**: Soft blue-600/light gray throughout all pages
+**Consistent Background**: Soft white/light gray throughout all pages
 - No section color changes
 - Visual separation through subtle shadows and spacing
 - Decorative elements on left/right edges (geometric shapes, 5% opacity)
