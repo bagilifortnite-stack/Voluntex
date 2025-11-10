@@ -660,4 +660,27 @@ html.dark h2 {
 }
 </style>
 
+
+<style>
+/* Automatically make text white when inside dark sections */
+[class*="bg-gray-800"],
+[class*="bg-gray-900"],
+[class*="bg-slate-800"],
+[class*="bg-slate-900"],
+.dark section,
+.dark div,
+.dark header {
+  color: #ffffff !important;
+}
+
+/* Optional: links too */
+[class*="bg-gray-800"] a,
+[class*="bg-gray-900"] a,
+[class*="bg-slate-800"] a,
+[class*="bg-slate-900"] a,
+.dark a {
+  color: #a5b4fc !important; /* soft blue accent for readability */
+}
+</style>
+
 </html>
