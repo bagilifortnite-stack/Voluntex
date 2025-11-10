@@ -666,7 +666,7 @@ function displayOrganizations(orgs) {
     if (orgs.length === 0) {
         container.innerHTML = `
             <div class="col-span-full text-center py-12">
-                <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-4">
+                <h3 class="text-xl font-semibold text-gray-600 dark:text-blue-600 mb-4">
                     No organizations found matching your criteria.
                 </h3>
                 <p class="text-gray-500 dark:text-gray-500">
