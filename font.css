@@ -1,7 +1,7 @@
 /* Load the correct font file */
 @font-face {
   font-family: "Chillax"; /* or "Switzer" if that’s the correct name */
-  src: url("./fonts/Chillax-Medium.otf") format("opentype"); /* make sure this file exists */
+  src: url("./fonts/Sentient-Medium.otf") format("opentype"); /* make sure this file exists */
   font-weight: 400;
   font-style: normal;
   font-display: swap;
