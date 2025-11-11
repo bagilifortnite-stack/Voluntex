@@ -2,7 +2,7 @@
 @font-face {
   font-family: "Chillax"; /* or "Switzer" if that’s the correct name */
   src: url("./fonts/Sentient-Medium.otf") format("opentype"); /* make sure this file exists */
-  font-weight: 400;
+  font-weight: 250;
   font-style: normal;
   font-display: swap;
 }
