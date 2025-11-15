@@ -678,7 +678,11 @@ html.dark h3 {
 
 
 <style>
-
+/* Light mode only (when <html> does NOT have .dark) */
+html:not(.dark) h3 {
+  color: #000 !important;
+  background: transparent !important;
+}
 /* Dark mode (when <html> HAS .dark) */
 html.dark span {
   color: #ffff !important;
