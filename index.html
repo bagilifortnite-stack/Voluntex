@@ -678,11 +678,6 @@ html.dark h3 {
 
 
 <style>
-/* Light mode only (when <html> does NOT have .dark) */
-html:not(.dark) span {
-  color: #000 !important;
-  background: transparent !important;
-}
 
 /* Dark mode (when <html> HAS .dark) */
 html.dark span {
@@ -705,4 +700,15 @@ html.dark div class=stat-counter text-4xl font-bold text-black {
 }
 </style>
 
+<style>
+/* Particle background colors */
+html:not(.dark) #particle-canvas {
+    background: white !important;
+}
+
+html.dark #particle-canvas {
+    background: #0f172a !important;
+}
+</style>
+    
 </html>
