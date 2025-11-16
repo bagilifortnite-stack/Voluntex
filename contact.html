@@ -655,4 +655,16 @@ html.dark h1 {
 }
 </style>
 
+<style>
+/* Light mode: percentage must be black */
+html:not(.dark) #percentageComplete {
+    color: #000 !important;
+}
+
+/* Dark mode: percentage must be white */
+html.dark #percentageComplete {
+    color: #fff !important;
+}
+</style>
+
 </html>
