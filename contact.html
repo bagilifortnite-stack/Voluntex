@@ -528,47 +528,58 @@
         </div>
     </footer>
 
-    <!-- Volunteer Hours Tracker Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentHoursInput = document.getElementById('currentHours');
-            const hoursRemainingSpan = document.getElementById('hoursRemaining');
-            const percentageCompleteSpan = document.getElementById('percentageComplete');
-            const progressCircle = document.getElementById('progressCircle');
-            const graduationStatusSpan = document.getElementById('graduationStatus');
-            
-            const totalHours = 40;
-            const circumference = 2 * Math.PI * 40; // radius = 40
-            
-            function updateProgress() {
-                const currentHours = parseInt(currentHoursInput.value) || 0;
-                const remainingHours = Math.max(0, totalHours - currentHours);
-                const percentage = Math.min(100, (currentHours / totalHours) * 100);
-                
-                hoursRemainingSpan.textContent = remainingHours;
-                percentageCompleteSpan.textContent = Math.round(percentage) + '%';
-                
-                // Update progress circle
-                const offset = circumference - (percentage / 100) * circumference;
-                progressCircle.style.strokeDashoffset = offset;
-                
-                // Update graduation status
-                if (currentHours >= totalHours) {
-                    graduationStatusSpan.textContent = '🎉 Congratulations! You've met the graduation requirement!';
-                    graduationStatusSpan.parentElement.className = 'inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg';
-                } else if (currentHours >= 30) {
-                    graduationStatusSpan.textContent = 'Great progress! You\'re almost there!';
-                    graduationStatusSpan.parentElement.className = 'inline-flex items-center px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-lg';
-                } else {
-                    graduationStatusSpan.textContent = 'Keep going! You\'re on track for graduation.';
-                    graduationStatusSpan.parentElement.className = 'inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg';
-                }
-            }
-            
-            currentHoursInput.addEventListener('input', updateProgress);
-            updateProgress(); // Initial calculation
-        });
-    </script>
+   <!-- Volunteer Hours Tracker Script -->
+<script>
+  function updateProgressTracker() {
+    const totalHours = 40;
+    const radius = 40;
+    const circumference = 2 * Math.PI * radius;
+
+    const currentHoursInput = document.getElementById('currentHours');
+    const hoursRemainingSpan = document.getElementById('hoursRemaining');
+    const percentageCompleteSpan = document.getElementById('percentageComplete');
+    const progressCircle = document.getElementById('progressCircle');
+    const graduationStatusSpan = document.getElementById('graduationStatus');
+
+    let currentHours = parseFloat(currentHoursInput.value);
+
+    if (isNaN(currentHours) || currentHours < 0) currentHours = 0;
+    if (currentHours > totalHours) currentHours = totalHours;
+
+    currentHoursInput.value = currentHours;
+
+    const remainingHours = totalHours - currentHours;
+    const percentage = (currentHours / totalHours) * 100;
+
+    hoursRemainingSpan.textContent = remainingHours;
+    percentageCompleteSpan.textContent = Math.round(percentage) + '%';
+
+    // Make sure the circle uses the right circumference
+    progressCircle.style.strokeDasharray = circumference;
+    const offset = circumference - (percentage / 100) * circumference;
+    progressCircle.style.strokeDashoffset = offset;
+
+    if (currentHours >= totalHours) {
+      graduationStatusSpan.textContent = "🎉 Congratulations! You've met the graduation requirement!";
+      graduationStatusSpan.parentElement.className =
+        'inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg';
+    } else if (currentHours >= 30) {
+      graduationStatusSpan.textContent = "Great progress! You're almost there!";
+      graduationStatusSpan.parentElement.className =
+        'inline-flex items-center px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-lg';
+    } else {
+      graduationStatusSpan.textContent = "Keep going! You're on track for graduation.";
+      graduationStatusSpan.parentElement.className =
+        'inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const currentHoursInput = document.getElementById('currentHours');
+    currentHoursInput.addEventListener('input', updateProgressTracker);
+    updateProgressTracker(); // initial state at 0 hours
+  });
+</script>
 
     <!-- Main JavaScript -->
     <script src="main.js"></script>
