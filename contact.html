@@ -641,4 +641,18 @@ html.dark span {
 }
 </style>
 
+<style>
+/* Light mode only (when <html> does NOT have .dark) */
+html:not(.dark) h1 {
+  color: #000 !important;
+  background: transparent !important;
+}
+
+/* Dark mode (when <html> HAS .dark) */
+html.dark h1 {
+  color: #ffff !important;
+  background: transparent !important; /* or remove if you want a bar */
+}
+</style>
+
 </html>
