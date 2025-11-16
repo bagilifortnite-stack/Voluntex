@@ -94,17 +94,21 @@
             <div class="flex justify-between items-center h-16">
                 
                 <!-- Logo -->
-             <div class="flex-shrink-0">
-  <a href="index.html" class="flex items-center">
+      <!-- Light mode logo (shown only in light mode) -->
+    <a href="index.html" class="flex items-center">
+    <img 
+      src="images/blue-transparent-background.png" 
+      alt="VoluntEx Logo Light Mode"
+      class="logo-light h-40 md:h-100 w-auto mr-3"
+    />
+
+    <!-- Dark mode logo (shown only in dark mode) -->
     <img 
       src="images/no-background-logo.png" 
-      alt="VoluntEx Logo" 
-      class="h-40 w-100 mr-3"
-      loading="eager"
-      decoding="async"
+      alt="VoluntEx Logo Dark Mode"
+      class="logo-dark h-40 md:h-100 w-auto mr-3"
     />
-  </a>
-</div>
+</a>
 
                 
                 <!-- Desktop Navigation -->
@@ -160,7 +164,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-white dark:to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-black
