@@ -395,4 +395,18 @@ html:not(.dark) .bg-gray-50 h2 {
 }
 </style>
 
+
+<style>
+/* Light mode only (when <html> does NOT have .dark) */
+html:not(.dark) span {
+  color: #000 !important;
+  background: transparent !important;
+}
+/* Dark mode (when <html> HAS .dark) */
+html.dark span {
+  color: #ffff !important;
+  background: transparent !important; /* or remove if you want a bar */
+}
+</style>
+
 </html>
