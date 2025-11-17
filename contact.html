@@ -290,7 +290,7 @@
                     </div>
                     
                     <!-- Organization Partnerships -->
-                    <div class="bg-purple-150 dark:bg-purple-900/20 rounded-2xl p-6">
+                   <div class="partnership-card bg-purple-150 dark:bg-purple-900/20 rounded-2xl p-6">
                         <h3 class="text-lg font-semibold text-black
  
  dark:text-white
@@ -720,6 +720,18 @@ html:not(.dark) .general-inquiries * {
 
 /* Keep normal white in dark mode */
 html.dark .general-inquiries * {
+    color: #fff !important;
+}
+</style>
+
+<style>
+/* Light mode: partnerships card text must be black */
+html:not(.dark) .partnership-card * {
+    color: #000 !important;
+}
+
+/* Dark mode: use white/gray so it stays readable */
+html.dark .partnership-card * {
     color: #fff !important;
 }
 </style>
